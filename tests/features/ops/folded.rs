@@ -1,3 +1,5 @@
+//@rustc-env: RPL_PATS=tests/features/ops/folded.rpl
+//@check-pass
 //@compile-flags: -Zinline-mir=false
 use std::sync::Mutex;
 

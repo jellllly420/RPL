@@ -8,13 +8,14 @@ ops {
 
 patt {
     p[$U: type] = fn _ (..) -> _ {
+        'lock:
         let $guard: $U = $sync_folded::$lock(move _);
     }
 }
 
 diag {
     p = {
-        primary(p) = "folded pattern (this should never fire)",
+        primary(lock) = "folded pattern (this should never fire)",
         name = "ops_folded",
     }
 }

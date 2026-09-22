@@ -1,3 +1,5 @@
+//@rustc-env: RPL_PATS=tests/features/ops_cve_2025_68260/pattern.rpl
+//@check-pass
 //@compile-flags: -Zinline-mir=false
 //! CVE-2025-68260 POC — fixed variant.
 //!

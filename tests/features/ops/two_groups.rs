@@ -1,3 +1,4 @@
+//@rustc-env: RPL_PATS=tests/features/ops/two_groups.rpl
 //@compile-flags: -Zinline-mir=false
 // two_groups test: exercises cartesian-product matching across TWO op groups.
 // sync_2g has 2 instances (Mutex, RwLock).
@@ -15,7 +16,7 @@ use std::sync::Mutex;
 fn main() {
     let m: Mutex<i32> = Mutex::new(0);
     let _g = m.lock();
-    //~^ ops_two_groups
+    //~^ ERROR: two-groups match: lock and log in same function
     let msg: &str = "hi";
     let _r = std::intrinsics::black_box(msg);
 }

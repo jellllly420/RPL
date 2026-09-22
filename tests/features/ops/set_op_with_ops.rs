@@ -1,3 +1,4 @@
+//@rustc-env: RPL_PATS=tests/features/ops/set_op_with_ops.rpl
 //@compile-flags: -Zinline-mir=false
 #![feature(core_intrinsics)]
 #![allow(internal_features)]
@@ -7,7 +8,7 @@ use std::sync::Mutex;
 fn lock_only() {
     let m: Mutex<i32> = Mutex::new(0);
     let _g = m.lock();
-    //~^ ops_lock_no_unlock
+    //~^ ERROR: lock without explicit release
 }
 
 // Locks and then calls black_box on the guard (the "covered" marker).

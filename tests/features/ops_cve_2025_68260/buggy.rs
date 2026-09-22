@@ -1,3 +1,4 @@
+//@rustc-env: RPL_PATS=tests/features/ops_cve_2025_68260/pattern.rpl
 //@compile-flags: -Zinline-mir=false
 //! CVE-2025-68260 POC — buggy variant.
 //!
@@ -34,7 +35,7 @@ fn buggy_release() {
 
     // Step 1: acquire lock — pattern matches $sync_cve::$lock.
     let g = mtx.lock();
-    //~^ ops_cve_2025_68260
+    //~^ ERROR: intrusive list drained outside the lock that owns it (CVE-2025-68260 bug class)
 
     let mut list_inner = OwningList { dummy: 0 };
     let mut temp = TempList { dummy: 0 };
